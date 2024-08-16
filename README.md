@@ -2,6 +2,9 @@
 (French below)
 - Clone this repo on your server
 - Edit the config.py file and replace the values by the ones you want to use (SERVICE_PORT = the port the service will be running on, AUTH_TOKEN = the password to access the panel, SERVER_IP = the IP address of your server)
+- Create a virtualenv and install dependancies
+> virtualenv venv && source venv/bin/activate && pip3 install flask
+
 - Create a new service file to run the service on your server:
 > sudo nano /etc/systemd/system/SimpleServerManager.service
 
@@ -37,6 +40,9 @@ Now you can access your instance of SimpleServerManager from another device by t
 # Comment installer
 - Clonez ce dépot sur votre serveur
 - Editez le fichier config.py et remplacez les valeurs par celles que vous souhaitez utiliser (SERVICE_PORT = le port sur lequel écoutera le service, AUTH_TOKEN = le mot de passe à utiliser pour accéder au panel, SERVER_IP = l'adresse IP de votre serveur)
+- Créez un environnement virtuel et installez les dépendances
+> virtualenv venv && source venv/bin/activate && pip3 install flask
+
 - Créez un nouveau fichier de service pour lancer le service sur votre serveur:
 > sudo nano /etc/systemd/system/SimpleServerManager.service
 
