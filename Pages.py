@@ -175,11 +175,13 @@ panel_page = f"""
             <option value="12H">12 heures</option>
             <option value="24H">24 heures</option>
         </select>
-        <button id="button_reboot">Redémarrer</button>
+        <button id="button_reboot">Redémarrer</button><br/>
+        <button id="button_update">Mettre à jour les paquets</button>
     </body>
     <script>
         const buttonShutdown = document.getElementById("button_shutdown");
         const buttonReboot = document.getElementById("button_reboot");
+        const buttonUpdate = document.getElementById("button_update");
         
         // Function executed when the user clicks on the Shutdown button
         buttonShutdown.onclick = function(){{
@@ -226,6 +228,26 @@ panel_page = f"""
 
             // Calling the function to make the Reboot request
             requestReboot('{config.SERVER_IP}:{config.SERVICE_PORT}/reboot');
+        }}
+        
+        //Function executed when the user clicks on the Update button
+        buttonUpdate.onclick = function(){{
+            // Function to send the update request
+            async function requestUpdate(url = '') {{
+                try {{
+                    const response = await fetch(url, {{
+                        method: 'POST',
+                        headers: {{
+                            'Authorization': `${{loginCookieValue}}`
+                        }}
+                    }});
+                }} catch (error) {{
+                    console.error('Erreur:', error);
+                }}
+            }}
+
+            // Calling the function to make the Update request
+            requestUpdate('{config.SERVER_IP}:{config.SERVICE_PORT}/aptupdate');
         }}
     </script>
 </html>

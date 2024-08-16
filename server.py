@@ -113,7 +113,7 @@ def apt_update():
             try:
                 # Executing the update & upgrade commands
                 subprocess.run(['sudo', 'apt-get', 'update'])
-                subprocess.run(['sudo', 'apt', 'upgrade'])
+                subprocess.run(['sudo', 'apt', 'upgrade', '-y'])
             except subprocess.CalledProcessError as e:
                 print(f"Erreur lors de l'exécution de la commande d'update : {e}")
             return "Commande valide !"
